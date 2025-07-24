@@ -14,6 +14,36 @@ app.get('/sum/:firstArg/:secondArg', function(req,res){
     });
 });
 
+app.get('/subtract/:firstArg/:secondArg', function(req,res){
+    const a= req.params.firstArg;
+    const b=req.params.secondArg;
+    res.json({
+        answer: a-b
+    });
+});
+
+app.get('/multiply/:firstArg/:secondArg', function(req,res){
+    const a=req.params.firstArg;
+    const b= req.params.secondArg;
+    res.json({
+        answer: a*b
+    });
+});
+
+app.get('/divide/:firstArg/:secondArg', function(req,res){
+    const a=req.params.firstArg;
+    const b=req.params.secondArg;
+    if(b==0){
+        return res.json({
+            alert:"Cannot divide by zero."
+        });
+    }
+    res.json({
+        answer: a/b
+    });
+});
+
+
 app.listen(3000, ()=>{
     console.log("Math CLI tool is running on port 3000...");
 });
